@@ -1,0 +1,6 @@
+| Роль              | Права роли                                                                                                      | Группы пользователей           |
+|-------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------|
+| cluster-readonly  | - get, list, watch для основных ресурсов кластера (Pods, Deployments, Services, ConfigMaps и др.)               | developers, qa                 |
+| cluster-config    | - get, list, watch, create, update, patch, delete для основных ресурсов кластера <br/> - без доступа к Secret   | devops, support                |
+| secret-view       | - get (чтение) Secrets                                                                                          | security-team                  |
+| cluster-admin     | - Полный доступ (аналог cluster-admin), включая управление ресурсами кластера и просмотр/управление Secrets     | ops-leads, system-admins       |
