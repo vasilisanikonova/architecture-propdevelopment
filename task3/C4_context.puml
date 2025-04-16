@@ -1,0 +1,21 @@
+@startuml
+title Контекстная диаграмма
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+Person(user, "Пользователь", "Управляет шлакбаумом и домофоном")
+
+System(PropDevelopment, "PropDevelopment", "Организует взаимодействие с Api партнера")
+System(MobileApp, "MobileApp", "")
+
+System_Ext(partner, "Сервис партнера", "API для управления домофоном и шлакбаумом", "Uses REST API, JSON data format")
+System_Ext(intercom, "Домофон", "API для управления домофоном", "Uses REST API, JSON data format")
+System_Ext(barrier, "Шлакбаум", "API для управления шлакбаумом", "Uses REST API, JSON data format")
+
+Rel(user,MobileApp,"Запрос на управление устройством")
+Rel(MobileApp,PropDevelopment,"Передача запроса в PropDevelopment")
+
+Rel(PropDevelopment,partner,"Сигналы управления")
+Rel(partner,intercom,"Сигналы управления домофоном")
+Rel(partner,barrier,"Запрос значения шлакбаумом")
+
+@enduml
